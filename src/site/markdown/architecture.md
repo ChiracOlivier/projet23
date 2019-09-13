@@ -2,13 +2,13 @@
 
 ### Généralités
 
-Lorem ipsum dolor sit amet, consectetur adipisicing elit,
-sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+L'architecture de mon projet s'inspire grandement de celui vu dans le cours
+ donc cette image correspond assez bien..
 
 
 Une image :
 
-![Dépendances entre les modules](img/)
+![Dépendances entre les modules](img/dependances_modules.png)
 
 Une autre image :
 

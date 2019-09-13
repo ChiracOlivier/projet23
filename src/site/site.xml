@@ -19,9 +19,10 @@
         </breadcrumbs>
 
         <!-- ===== Menus ===== -->
-        <menu name="voila">
-            <item name="ceci" href="dependencies.html"/>
-            <item name="cela" href="dependency-info.html"/>
+        <menu name="Liens Directs">
+            <item name="infos du projet" href="projet-info.html"/>
+            <item name="Convergences des dependances" href="dependency-convergence.html"/>
+            <item name="Infos-dependances" href="dependency-info.html"/>
         </menu>
         <!-- Ajout d'un menu vers le projet parent -->
         <menu ref="parent" inherit="top"/>
