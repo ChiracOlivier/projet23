@@ -20,8 +20,7 @@
 
         <!-- ===== Menus ===== -->
         <menu name="voila">
-            <item name="ceci" href="dependencies.html"/>
-            <item name="cela" href="dependency-info.html"/>
+            <item name="ceci" href="dependency-convergence.html"/>
         </menu>
         <!-- Ajout d'un menu vers le projet parent -->
         <menu ref="parent" inherit="top"/>
