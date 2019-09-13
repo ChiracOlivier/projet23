@@ -117,6 +117,10 @@
 
         </plugin>
         <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-site-plugin</artifactId>
+        </plugin>
+        <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
 
         </plugin>
