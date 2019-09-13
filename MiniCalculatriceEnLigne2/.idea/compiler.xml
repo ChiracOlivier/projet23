@@ -6,15 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="projet23-consumer" />
-        <module name="projet23-batch" />
-        <module name="projet23-webapp" />
-        <module name="projet23-business" />
-        <module name="projet23-model" />
+        <module name="MiniCalculatriceEnLigne" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="projet23-MiniCalculatrice" target="1.8" />
+      <module name="MiniCalculatriceEnLigne" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

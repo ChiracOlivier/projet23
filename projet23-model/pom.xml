@@ -17,6 +17,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <description>Et ici, description de projet23-model</description>
   <profiles>
     <profile>
       <id>with-sources</id>

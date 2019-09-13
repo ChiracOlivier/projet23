@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.walterjwhite.java.modules.contact.modules:servlet:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/walterjwhite/java/modules/contact/modules/servlet/unknown/servlet-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/walterjwhite/java/modules/contact/modules/servlet/unknown/servlet-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/walterjwhite/java/modules/contact/modules/servlet/unknown/servlet-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

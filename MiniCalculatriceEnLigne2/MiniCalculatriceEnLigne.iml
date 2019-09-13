@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule="true" version="4">
+  <component name="FacetManager">
+    <facet type="web" name="Web">
+      <configuration>
+        <webroots>
+          <root url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/main/webapp" relative="/" />
+        </webroots>
+        <sourceRoots>
+          <root url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/main/java" />
+          <root url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/main/resources" />
+        </sourceRoots>
+      </configuration>
+    </facet>
+  </component>
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_7">
+    <output url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/target/classes" />
+    <output-test url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/target/test-classes" />
+    <content url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2">
+      <sourceFolder url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/../projet22/MiniCalculatriceEnLigne2/target" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: junit:junit:unknown" level="project" />
+    <orderEntry type="library" name="Maven: javax.servlet:servlet-api:unknown" level="project" />
+    <orderEntry type="library" name="Maven: javax.validation:validation-api:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.bval:bval-jsr:unknown" level="project" />
+    <orderEntry type="library" name="Maven: com.walterjwhite.java.modules.contact.modules:servlet:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.mycompany.projet22:projet-business:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.mycompany.projet22:projet22-model:unknown" level="project" />
+    <orderEntry type="library" name="Maven: org.apache.commons:commons-collections4:4.1" level="project" />
+  </component>
+</module>

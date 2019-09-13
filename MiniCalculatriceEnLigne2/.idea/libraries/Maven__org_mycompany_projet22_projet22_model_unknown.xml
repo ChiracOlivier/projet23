@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.mycompany.projet22:projet22-model:unknown">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mycompany/projet22/projet22-model/unknown/projet22-model-unknown.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mycompany/projet22/projet22-model/unknown/projet22-model-unknown-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/org/mycompany/projet22/projet22-model/unknown/projet22-model-unknown-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="MiniCalculatriceEnLigne:war">
+    <output-path>$PROJECT_DIR$/../projet22/MiniCalculatriceEnLigne2/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>MiniCalculatriceEnLigne</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="projet22-webapp.war">
+      <element id="artifact" artifact-name="MiniCalculatriceEnLigne:war exploded" />
+    </root>
+  </artifact>
+</component>

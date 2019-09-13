@@ -38,6 +38,11 @@
   <application.name>Appli-Multi-tiers</application.name>
     <application.version>1.0.0</application.version>
   </properties>
+  <organization>
+    <url>http://www.mycompany.com</url>
+    <name>My Company</name>
+  </organization>
+  <description>Une description pour vous montrer que c'est possible( merci à vous , chers correcteurs d'Openclassrom)</description>
   <!-- =============================================================== -->
   <!-- DistributionManagement -->
   <!-- =============================================================== -->
@@ -119,6 +124,10 @@
           <version>3.0.2</version>
         </plugin>
         <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.3</version>
+        </plugin>
+        <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
           <version>3.0.0-M2</version>
@@ -171,7 +180,7 @@
             <!-- reportSet d'agrégation des rapports des sous-projets (modules) -->
             <id>aggregate</id>
             <reports>
-              <report>report</report>
+              <report>dependency-info</report>
             </reports>
             <!-- ne pas exécuter ce sous-rapport dans les sous-projets -->
             <inherited>false</inherited>
@@ -182,7 +191,7 @@
           <reportSet>
             <id>html</id>
             <reports>
-              <report>javadoc</report>
+              <report>mailing-lists</report>
             </reports>
             <configuration>
               <doctitle>My API for ${project.name} ${project.version}</doctitle> <!-- Used by javadoc:javadoc goal -->
@@ -194,7 +203,7 @@
           <reportSet>
             <id>test-html</id>
             <reports>
-              <report>test-javadoc</report>
+              <report>help</report>
             </reports>
             <configuration>
               <testDoctitle>My Test API for ${project.name} ${project.version}</testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
@@ -206,7 +215,7 @@
             <id>aggregated</id>
             <inherited>false</inherited>
             <reports>
-              <report>aggregate</report>
+              <report>scm</report>
             </reports>
           </reportSet>
           <!-- reportSet non agrégé, exécuté dans tous les sous-projets (modules) -->
@@ -215,7 +224,7 @@
             <!-- exécuter ce sous-rapport dans les sous-projets -->
             <inherited>true</inherited>
             <reports>
-              <report>report</report>
+              <report>dependency-convergence</report>
             </reports>
             <configuration>
               <aggregate>false</aggregate>

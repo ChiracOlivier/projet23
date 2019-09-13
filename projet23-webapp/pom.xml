@@ -19,6 +19,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <description>Et ici, description de projet23-webapp</description>
 
   <dependencies>
     <dependency>
