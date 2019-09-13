@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="FrameworkDetectionExcludesConfiguration">
     <file type="web" url="file://$PROJECT_DIR$/MiniCalculatriceEnLigne2" />
+    <file type="web" url="file://$PROJECT_DIR$/projet23-webapp" />
   </component>
   <component name="MavenProjectsManager">
     <option name="originalFiles">

@@ -9,6 +9,7 @@
         <module name="projet23-MiniCalculatrice" />
         <module name="projet23-consumer" />
         <module name="projet23-batch" />
+        <module name="projet23-webapp" />
         <module name="projet23-business" />
         <module name="projet23-model" />
       </profile>
