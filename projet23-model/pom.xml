@@ -5,14 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>org.mycompany.projet23</groupId>
-  <artifactId>projet23</artifactId>
-  <packaging>pom</packaging>
+  <artifactId>projet23-model</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <modules>
-    <module>projet23-model</module>
-  </modules>
 
-  <name>projet23</name>
+  <name>projet23-model</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
