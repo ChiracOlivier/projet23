@@ -1,185 +1,205 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>projet23-webapp</artifactId>
-  <packaging>war</packaging>
+    <artifactId>projet23-webapp</artifactId>
+    <packaging>war</packaging>
 
-  <parent>
-  <groupId>org.mycompany.projet23</groupId>
-  <artifactId>projet23</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  </parent>
-  <name>projet23-webapp Maven Webapp</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
+    <parent>
+        <groupId>org.mycompany.projet23</groupId>
+        <artifactId>projet23</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <name>projet23-webapp Maven Webapp</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
 
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    <application.name>projet23-webapp(nom public de l'application web)</application.name>
-    <maven.build.timestamp.format>dd/MM/YYYY</maven.build.timestamp.format>
-    <build.timestamp>${maven.build.timestamp.format}</build.timestamp>
-    <salut>${user.timezone}</salut>
-  </properties>
-  <description>Et ici, description de projet23-webapp </description>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <application.name>projet23-webapp(nom public de l'application web)</application.name>
+        <maven.build.timestamp.format>dd/MM/YYYY</maven.build.timestamp.format>
+        <build.timestamp>${maven.build.timestamp.format}</build.timestamp>
+        <salut>${user.timezone}</salut>
+    </properties>
+    <description>Et ici, description de projet23-webapp</description>
 
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-    </dependency>
-  </dependencies>
-<profiles>
-  <profile>
-    <id>with-sources</id>
-  </profile>
-  <profile>
-    <id>target-prod</id>
-  </profile>
-</profiles>
-  <build>
-    <finalName>projet23-webapp</finalName>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mycompany.projet23</groupId>
+            <artifactId>projet23-business</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mycompany.projet23</groupId>
+            <artifactId>projet23-model</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-lang</groupId>
+            <artifactId>commons-lang</artifactId>
+        </dependency>
+    </dependencies>
+    <profiles>
+        <profile>
+            <id>with-sources</id>
+        </profile>
+        <profile>
+            <id>target-prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+    <build>
+        <finalName>projet23-webapp</finalName>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <artifactId>maven-compiler-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <configuration>
+                        <source>1.12</source>
+                        <target>1.12</target>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>enforce-target-prod-no-snapshot</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
+                                    <requireReleaseVersion>
+                                        <profiles>target-prod</profiles>
+                                        <all>false</all>
+                                    </requireReleaseVersion>
+                                    <!-- Aucune dépendance ne doit être en SNAPSHOT -->
+                                    <requireReleaseDeps>
+                                        <profiles>target-prod</profiles>
+                                        <all>false</all>
+                                    </requireReleaseDeps>
+                                </rules>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>with-sources-run</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireActiveProfile>
+                                        <profiles>with-sources</profiles>
+                                        <all>false</all>
+                                    </requireActiveProfile>
+                                </rules>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>with-sources-ron</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>javadoc</goal>
+                                <goal>test-javadoc</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory></outputDirectory>
+                                <reportOutputDirectory></reportOutputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-enforcer-plugin</artifactId>
-          <executions>
-                    <execution>
-                      <id>enforce-target-prod-no-snapshot</id>
-                      <phase>package</phase>
-                      <goals>
-                        <goal>enforce</goal>
-                      </goals>
-                      <configuration>
-                        <rules>
-                          <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
-                          <requireReleaseVersion>
-                            <profiles>target-prod</profiles>
-                            <all>false</all>
-                          </requireReleaseVersion>
-                          <!-- Aucune dépendance ne doit être en SNAPSHOT -->
-                          <requireReleaseDeps>
-                            <profiles>target-prod</profiles>
-                            <all>false</all>
-                          </requireReleaseDeps>
-                        </rules>
-                      </configuration>
-                    </execution>
-            <execution>
-              <id>with-sources-run</id>
-              <phase>package</phase>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireActiveProfile>
-                    <profiles>with-sources</profiles>
-                    <all>false</all>
-                  </requireActiveProfile>
-                </rules>
-              </configuration>
-            </execution>
-            <execution>
-              <id>with-sources-ron</id>
-              <phase>package</phase>
-              <goals>
-                <goal>javadoc</goal>
-                <goal>test-javadoc</goal>
-              </goals>
-              <configuration>
-                <outputDirectory></outputDirectory>
-                <reportOutputDirectory></reportOutputDirectory>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <!-- see http://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_war_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <configuration>
+                        <doctitle>My API for ${project.name} ${project.version}
+                        </doctitle> <!-- Used by javadoc:javadoc goal -->
+                        <windowtitle>My API for ${project.name} ${project.version}
+                        </windowtitle> <!-- Used by javadoc:javadoc goal -->
 
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <configuration>
-            <doctitle>My API for ${project.name} ${project.version}</doctitle> <!-- Used by javadoc:javadoc goal -->
-            <windowtitle>My API for ${project.name} ${project.version}</windowtitle> <!-- Used by javadoc:javadoc goal -->
+                        <testDoctitle>My Test API for ${project.name} ${project.version}
+                        </testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
+                        <testWindowtitle>My Test API for ${project.name} ${project.version}
+                        </testWindowtitle> <!-- Used by javadoc:test-javadoc goal -->
 
-            <testDoctitle>My Test API for ${project.name} ${project.version}</testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
-            <testWindowtitle>My Test API for ${project.name} ${project.version}</testWindowtitle> <!-- Used by javadoc:test-javadoc goal -->
+                    </configuration>
+                </plugin>
 
-          </configuration>
-        </plugin>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
 
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <configuration>
+                        <webResources>
+                            <resource>
+                                <directory>src/main/webapp</directory>
+                                <filtering>true</filtering>
+                                <includes>
+                                    <include>WEB-INF/index.jsp</include>
+                                </includes>
+                            </resource>
+                        </webResources>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <artifactId>maven-war-plugin</artifactId>
-          <configuration>
-            <webResources>
-              <resource>
-                <directory>src/main/webapp</directory>
-                <filtering>true</filtering>
-                <includes>
-                  <include>WEB-INF/index.jsp</include>
-                </includes>
-              </resource>
-            </webResources>
-          </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-site-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-site-plugin</artifactId>
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
+                </plugin>
 
-        </plugin>
-
-            <!-- Création des archives de déploiement -->
-            <plugin>
-              <groupId>org.apache.maven.plugins</groupId>
-              <artifactId>maven-assembly-plugin</artifactId>
-              <configuration>
-                <descriptors>
-                  <descriptor>src/assembly/archive-deploy.xml</descriptor>
-                </descriptors>
-              </configuration>
-              <executions>
-                <execution>
-                  <id>assembly-archive-deploy</id>
-                  <phase>package</phase>
-                  <goals>
-                    <goal>single</goal>
-                  </goals>
-                </execution>
-              </executions>
-            </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+                <!-- Création des archives de déploiement -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <descriptors>
+                            <descriptor>src/assembly/archive-deploy.xml</descriptor>
+                        </descriptors>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>assembly-archive-deploy</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

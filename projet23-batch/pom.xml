@@ -1,199 +1,213 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>projet23-batch</artifactId>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-    </dependency>
-  </dependencies>
+    <artifactId>projet23-batch</artifactId>
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+    </dependencies>
 
-  <parent>
-  <groupId>org.mycompany.projet23</groupId>
-  <artifactId>projet23</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  </parent>
-  <name>projet23-batch</name>
-  <!-- FIXME change it to the project's website -->
-  <url>http://www.example.com</url>
-  <description>Et ici, description de projet23-batch</description>
-  <profiles>
-    <profile>
-      <id>with-sources</id>
-    </profile>
-    <profile>
-      <id>target-prod</id>
-    </profile>
-  </profiles>
-  <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-<dependencyManagement>
-  <dependencies>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.11</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>org.mycompany.projet23</groupId>
-      <artifactId>projet23-business</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>org.mycompany.projet23</groupId>
-      <artifactId>projet23-model</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>commons-lang</groupId>
-      <artifactId>commons-lang</artifactId>
-    </dependency>
-  </dependencies>
-</dependencyManagement>
-  <build>
-    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
-      <plugins>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-compiler-plugin</artifactId>
-        </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-enforcer-plugin</artifactId>
-          <executions>
-            <execution>
-              <id>enforce-target-prod-no-snapshot</id>
-              <phase>package</phase>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
-                  <requireReleaseVersion>
-                    <profiles>target-prod</profiles>
-                    <all>false</all>
-                  </requireReleaseVersion>
-                  <!-- Aucune dépendance ne doit être en SNAPSHOT -->
-                  <requireReleaseDeps>
-                    <profiles>target-prod</profiles>
-                    <all>false</all>
-                  </requireReleaseDeps>
-                </rules>
-              </configuration>
-            </execution>
-            <execution>
-              <id>with-sources-run</id>
-              <phase>package</phase>
-              <goals>
-                <goal>enforce</goal>
-              </goals>
-              <configuration>
-                <rules>
-                  <requireActiveProfile>
-                    <profiles>with-sources</profiles>
-                    <all>false</all>
-                  </requireActiveProfile>
-                </rules>
-              </configuration>
-            </execution>
-            <execution>
-              <id>with-sources-ron</id>
-              <phase>package</phase>
-              <goals>
-                <goal>javadoc</goal>
-                <goal>test-javadoc</goal>
-              </goals>
-              <configuration>
-                <outputDirectory></outputDirectory>
-                <reportOutputDirectory></reportOutputDirectory>
-              </configuration>
-            </execution>
-          </executions>
-        </plugin>
-        <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
-        <plugin>
-          <artifactId>maven-clean-plugin</artifactId>
+    <parent>
+        <groupId>org.mycompany.projet23</groupId>
+        <artifactId>projet23</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <name>projet23-batch</name>
+    <!-- FIXME change it to the project's website -->
+    <url>http://www.example.com</url>
+    <description>Et ici, description de projet23-batch</description>
+    <profiles>
+        <profile>
+            <id>with-sources</id>
+        </profile>
+        <profile>
+            <id>target-prod</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+    </profiles>
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>4.11</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mycompany.projet23</groupId>
+                <artifactId>projet23-business</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>org.mycompany.projet23</groupId>
+                <artifactId>projet23-model</artifactId>
+                <version>1.0-SNAPSHOT</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-lang</groupId>
+                <artifactId>commons-lang</artifactId>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+    <build>
+        <resources>
+            <resource>
+                <directory>src/data/conf</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+        <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-enforcer-plugin</artifactId>
+                    <executions>
+                        <execution>
+                            <id>enforce-target-prod-no-snapshot</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
+                                    <requireReleaseVersion>
+                                        <profiles>target-prod</profiles>
+                                        <all>false</all>
+                                    </requireReleaseVersion>
+                                    <!-- Aucune dépendance ne doit être en SNAPSHOT -->
+                                    <requireReleaseDeps>
+                                        <profiles>target-prod</profiles>
+                                        <all>false</all>
+                                    </requireReleaseDeps>
+                                </rules>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>with-sources-run</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>enforce</goal>
+                            </goals>
+                            <configuration>
+                                <rules>
+                                    <requireActiveProfile>
+                                        <profiles>with-sources</profiles>
+                                        <all>false</all>
+                                    </requireActiveProfile>
+                                </rules>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>with-sources-ron</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>javadoc</goal>
+                                <goal>test-javadoc</goal>
+                            </goals>
+                            <configuration>
+                                <outputDirectory></outputDirectory>
+                                <reportOutputDirectory></reportOutputDirectory>
+                            </configuration>
+                        </execution>
+                    </executions>
+                </plugin>
+                <!-- clean lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#clean_Lifecycle -->
+                <plugin>
+                    <artifactId>maven-clean-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <version>3.1.1</version>
-          <configuration>
-            <doctitle>My API for ${project.name} ${project.version}</doctitle> <!-- Used by javadoc:javadoc goal -->
-            <windowtitle>My API for ${project.name} ${project.version}</windowtitle> <!-- Used by javadoc:javadoc goal -->
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-javadoc-plugin</artifactId>
+                    <version>3.1.1</version>
+                    <configuration>
+                        <doctitle>My API for ${project.name} ${project.version}
+                        </doctitle> <!-- Used by javadoc:javadoc goal -->
+                        <windowtitle>My API for ${project.name} ${project.version}
+                        </windowtitle> <!-- Used by javadoc:javadoc goal -->
 
-            <testDoctitle>My Test API for ${project.name} ${project.version}</testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
-            <testWindowtitle>My Test API for ${project.name} ${project.version}</testWindowtitle> <!-- Used by javadoc:test-javadoc goal -->
+                        <testDoctitle>My Test API for ${project.name} ${project.version}
+                        </testDoctitle> <!-- Used by javadoc:test-javadoc goal -->
+                        <testWindowtitle>My Test API for ${project.name} ${project.version}
+                        </testWindowtitle> <!-- Used by javadoc:test-javadoc goal -->
 
-          </configuration>
-        </plugin>
-        <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
-        <plugin>
-          <artifactId>maven-resources-plugin</artifactId>
+                    </configuration>
+                </plugin>
+                <!-- default lifecycle, jar packaging: see https://maven.apache.org/ref/current/maven-core/default-bindings.html#Plugin_bindings_for_jar_packaging -->
+                <plugin>
+                    <artifactId>maven-resources-plugin</artifactId>
 
-        </plugin>
+                </plugin>
 
-        <plugin>
-          <artifactId>maven-surefire-plugin</artifactId>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <artifactId>maven-jar-plugin</artifactId>
-          <configuration>
-            <archive>
-              <manifest>
-                <mainClass>org.mycompany.projet23.App1</mainClass>
-                <addClasspath>true</addClasspath>
-                <classpathPrefix></classpathPrefix>
-              </manifest>
-            </archive>
-          </configuration>
-        </plugin>
-        <plugin>
-          <artifactId>maven-install-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-jar-plugin</artifactId>
+                    <configuration>
+                        <archive>
+                            <manifest>
+                                <manifestFile>src/main/resources/META-INF/MANIFEST.MF</manifestFile>
+                                <mainClass>org.mycompany.projet23.App1</mainClass>
+                                <addClasspath>true</addClasspath>
+                                <classpathPrefix></classpathPrefix>
+                            </manifest>
+                        </archive>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-install-plugin</artifactId>
 
-        </plugin>
-        <plugin>
-          <artifactId>maven-deploy-plugin</artifactId>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-deploy-plugin</artifactId>
 
-        </plugin>
-        <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
-        <plugin>
-          <artifactId>maven-site-plugin</artifactId>
-          <version>3.7.1</version>
-        </plugin>
-        <plugin>
-          <artifactId>maven-project-info-reports-plugin</artifactId>
-          <version>3.0.0</version>
-        </plugin>
-              <!-- Création des archives de déploiement -->
-              <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                  <descriptors>
-                    <descriptor>src/assembly/archive-deploy.xml</descriptor>
-                  </descriptors>
-                </configuration>
-                <executions>
-                  <execution>
-                    <id>assembly-archive-deploy</id>
-                    <phase>package</phase>
-                    <goals>
-                      <goal>single</goal>
-                    </goals>
-                  </execution>
-                </executions>
-              </plugin>
-      </plugins>
-    </pluginManagement>
-  </build>
+                </plugin>
+                <!-- site lifecycle, see https://maven.apache.org/ref/current/maven-core/lifecycles.html#site_Lifecycle -->
+                <plugin>
+                    <artifactId>maven-site-plugin</artifactId>
+                    <version>3.7.1</version>
+                </plugin>
+                <plugin>
+                    <artifactId>maven-project-info-reports-plugin</artifactId>
+                    <version>3.0.0</version>
+                </plugin>
+                <!-- Création des archives de déploiement -->
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <configuration>
+                        <descriptors>
+                            <descriptor>src/assembly/archive-deploy.xml</descriptor>
+                        </descriptors>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>assembly-archive-deploy</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>

@@ -6,11 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="projet23-consumer" />
-        <module name="projet23-batch" />
         <module name="projet23-webapp" />
         <module name="projet23-business" />
+        <module name="projet23-batch" />
         <module name="projet23-model" />
+        <module name="projet23-consumer" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
