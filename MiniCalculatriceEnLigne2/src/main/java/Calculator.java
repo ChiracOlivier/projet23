@@ -2,9 +2,7 @@
 
 class Calculator {
 
-    double addition(double nombre1, double nombre2) {
-        return (nombre1) + (nombre2);
-    }
+   
 
     double soustraction(double nombre1, double nombre2) {
         return (nombre1) - (nombre2);
