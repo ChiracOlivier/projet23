@@ -156,15 +156,7 @@
           <locales>fr</locales>
         </configuration>
         </plugin>
-        <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-surefire-report-plugin</artifactId>
-          <version>3.0.0-M3</version>
-          <inherited>true</inherited>
-          <configuration>
-            <alwaysGenerateSurefireReport>true</alwaysGenerateSurefireReport>
-          </configuration>
-        </plugin>
+
       </plugins>
     </pluginManagement>
   </build>
@@ -274,10 +266,31 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-surefire-report-plugin</artifactId>
         <version>3.0.0-M3</version>
-        <inherited>true</inherited>
-        <configuration>
-          <alwaysGenerateSurefireReport>true</alwaysGenerateSurefireReport>
-        </configuration>
+        <reportSets>
+        <!-- reportSet d'agrégation des rapports des sous-modules -->
+        <reportSet>
+          <id>aggrega</id>
+          <inherited>false</inherited>
+          <reports>
+            <report>report</report>
+          </reports>
+          <configuration>
+            <aggregate>true</aggregate>
+          </configuration>
+        </reportSet>
+        <!-- reportSet non agrégé, exécuté dans tous les sous-projets (modules) -->
+        <reportSet>
+          <id>module</id>
+          <!-- exécuter ce sous-rapport dans les sous-projets -->
+          <inherited>true</inherited>
+          <reports>
+            <report>report-only</report>
+          </reports>
+          <configuration>
+            <aggregate>false</aggregate>
+          </configuration>
+        </reportSet>
+      </reportSets>
       </plugin>
     </plugins>
   </reporting>
