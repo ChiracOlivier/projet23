@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="org.mycompany.projet23.App2Test" time="0.003" errors="0" skipped="0">
+<testsuite tests="1" failures="0" name="org.mycompany.projet23.App2Test" time="0.001" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="12.0.2+10"/>
@@ -45,7 +45,7 @@
     <property name="idea.version2019.2.2" value="true"/>
     <property name="java.vm.specification.version" value="12"/>
     <property name="sun.arch.data.model" value="64"/>
-    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.2 clean package site site:stage -P with-sources"/>
+    <property name="sun.java.command" value="org.codehaus.classworlds.Launcher -Didea.version2019.2.2 clean package site site:stage -P with-sources,target-prod"/>
     <property name="java.home" value="C:\Program Files\Java\jdk-12.0.2"/>
     <property name="user.language" value="fr"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
@@ -64,5 +64,5 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="org.mycompany.projet23.App2Test" name="shouldAnswerWithTrue" time="0.003"/>
+  <testcase classname="org.mycompany.projet23.App2Test" name="shouldAnswerWithTrue" time="0.001"/>
 </testsuite>

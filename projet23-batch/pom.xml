@@ -25,6 +25,9 @@
     <profile>
       <id>with-sources</id>
     </profile>
+    <profile>
+      <id>target-prod</id>
+    </profile>
   </profiles>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -47,6 +50,10 @@
       <artifactId>projet23-model</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
+    </dependency>
   </dependencies>
 </dependencyManagement>
   <build>
@@ -60,6 +67,27 @@
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-enforcer-plugin</artifactId>
           <executions>
+            <execution>
+              <id>enforce-target-prod-no-snapshot</id>
+              <phase>package</phase>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
+                  <requireReleaseVersion>
+                    <profiles>target-prod</profiles>
+                    <all>false</all>
+                  </requireReleaseVersion>
+                  <!-- Aucune dépendance ne doit être en SNAPSHOT -->
+                  <requireReleaseDeps>
+                    <profiles>target-prod</profiles>
+                    <all>false</all>
+                  </requireReleaseDeps>
+                </rules>
+              </configuration>
+            </execution>
             <execution>
               <id>with-sources-run</id>
               <phase>package</phase>
@@ -122,7 +150,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>projet23-batch.src.main.java.org.mycompany.projet23.App1.java </mainClass>
+                <mainClass>org.mycompany.projet23.App1</mainClass>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix></classpathPrefix>
               </manifest>

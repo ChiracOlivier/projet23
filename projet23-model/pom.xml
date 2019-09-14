@@ -22,6 +22,9 @@
     <profile>
       <id>with-sources</id>
     </profile>
+    <profile>
+      <id>target-prod</id>
+    </profile>
   </profiles>
   <dependencies>
     <dependency>
@@ -29,6 +32,10 @@
       <artifactId>junit</artifactId>
       <version>4.11</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>commons-lang</groupId>
+      <artifactId>commons-lang</artifactId>
     </dependency>
   </dependencies>
 
@@ -44,10 +51,32 @@
             <target>1.8</target>
           </configuration>
         </plugin>
+
         <plugin>
           <groupId>org.apache.maven.plugins</groupId>
           <artifactId>maven-enforcer-plugin</artifactId>
           <executions>
+            <execution>
+              <id>enforce-target-prod-no-snapshot</id>
+              <phase>package</phase>
+              <goals>
+                <goal>enforce</goal>
+              </goals>
+              <configuration>
+                <rules>
+                  <!-- Le projet et son parent ne doivent pas être en SNAPSHOT -->
+                  <requireReleaseVersion>
+                    <profiles>target-prod</profiles>
+                    <all>false</all>
+                  </requireReleaseVersion>
+                  <!-- Aucune dépendance ne doit être en SNAPSHOT -->
+                  <requireReleaseDeps>
+                    <profiles>target-prod</profiles>
+                    <all>false</all>
+                  </requireReleaseDeps>
+                </rules>
+              </configuration>
+            </execution>
             <execution>
               <id>with-sources-run</id>
               <phase>package</phase>
@@ -109,7 +138,7 @@
           <configuration>
             <archive>
               <manifest>
-                <mainClass>projet23-model.src.main.java.org.mycompany.projet23.App4.java </mainClass>
+                <mainClass>org.mycompany.projet23.App4</mainClass>
                 <addClasspath>true</addClasspath>
                 <classpathPrefix></classpathPrefix>
               </manifest>
