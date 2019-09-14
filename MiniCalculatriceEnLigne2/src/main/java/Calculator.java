@@ -25,7 +25,21 @@ class Calculator {
 
         switch (operation) {
 
-          
+            case "+": {
+                return   this.addition(nombre1, nombre2);
+            }
+            case "-": {
+                return this.soustraction(nombre1, nombre2);
+            }
+            case "*": {
+                return   this.multiplication(nombre1, nombre2);
+            }
+            case "/": {
+                return this.division(nombre1, nombre2);
+            }
+            default: {
+                return null;
+            }
         }
     }
 }
